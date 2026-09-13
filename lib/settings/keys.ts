@@ -19,19 +19,9 @@ export const SECTION_KEYS = [
 
 export type SectionKey = (typeof SECTION_KEYS)[number];
 
-export const SECTION_LABELS: Record<SectionKey, string> = {
-  hero: "Hero",
-  property: "Property",
-  residency: "Residency",
-  vehicles: "Vehicles",
-  business: "Business",
-  insurance: "Insurance",
-  adaptation: "Adaptation",
-  why: "Why Choose Us",
-  how: "How We Work",
-  faq: "FAQ",
-  contact: "Contact",
-};
+// Display labels for these keys now live in messages/admin/*.json
+// ("sections.*") so the media manager can show them in the admin's chosen
+// UI language, not just English.
 
 export function sectionImageSettingKey(section: SectionKey): string {
   return `section_image:${section}`;

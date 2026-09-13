@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { onest, sourceSerif4 } from "@/lib/fonts";
+import { getAdminLocale, getAdminDictionary } from "@/lib/admin/i18n";
+import { AdminLocaleProvider } from "@/components/admin/AdminLocaleProvider";
 import "../globals.css";
 
 // A second, independent <html>-owning root layout. /admin/* sits outside
@@ -14,10 +16,17 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function AdminRootLayout({ children }: { children: ReactNode }) {
+export default async function AdminRootLayout({ children }: { children: ReactNode }) {
+  const locale = await getAdminLocale();
+  const dict = await getAdminDictionary(locale);
+
   return (
-    <html lang="en" className={`${onest.variable} ${sourceSerif4.variable} h-full antialiased`}>
-      <body className="min-h-full bg-surface text-ink">{children}</body>
+    <html lang={locale} className={`${onest.variable} ${sourceSerif4.variable} h-full antialiased`}>
+      <body className="min-h-full bg-surface text-ink">
+        <AdminLocaleProvider locale={locale} dict={dict}>
+          {children}
+        </AdminLocaleProvider>
+      </body>
     </html>
   );
 }

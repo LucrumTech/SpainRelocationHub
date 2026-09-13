@@ -1,0 +1,93 @@
+{
+  "login": {
+    "title": "Spain Relocation Hub — Administración",
+    "subtitle": "Inicia sesión para gestionar las solicitudes y el contenido del sitio.",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "signIn": "Iniciar sesión",
+    "signingIn": "Iniciando sesión…",
+    "forgotPassword": "¿Olvidaste tu contraseña?"
+  },
+  "forgotPassword": {
+    "title": "Restablece tu contraseña",
+    "subtitle": "Introduce tu correo de administrador y te enviaremos un enlace de restablecimiento.",
+    "email": "Correo electrónico",
+    "send": "Enviar enlace",
+    "sending": "Enviando…",
+    "submittedText": "Si esa dirección tiene una cuenta de administrador, el enlace de restablecimiento ya está en camino — caduca en 1 hora.",
+    "backToSignIn": "Volver al inicio de sesión"
+  },
+  "resetPassword": {
+    "title": "Establecer una nueva contraseña",
+    "missingLink": "Falta el enlace de restablecimiento. Solicita uno nuevo desde la página de inicio de sesión.",
+    "newPassword": "Nueva contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "save": "Guardar nueva contraseña",
+    "saving": "Guardando…"
+  },
+  "nav": {
+    "brand": "Admin SRH",
+    "leads": "Solicitudes",
+    "content": "Contenido",
+    "media": "Multimedia",
+    "signOut": "Cerrar sesión"
+  },
+  "leads": {
+    "title": "Solicitudes",
+    "countLabel": "Solicitudes registradas: {count}",
+    "exportCsv": "Exportar CSV",
+    "received": "Recibido",
+    "name": "Nombre",
+    "contact": "Contacto",
+    "services": "Servicios",
+    "locale": "Idioma",
+    "qualification": "Cualificación",
+    "country": "País",
+    "timeline": "Plazo",
+    "partySize": "Número de personas",
+    "step1Only": "Solo paso 1",
+    "noLeads": "Todavía no hay solicitudes."
+  },
+  "content": {
+    "title": "Contenido",
+    "subtitle": "Edita el texto de la página en cada idioma. La estructura de secciones y listas es fija — solo el texto es editable. Publicar actualiza el sitio en vivo al instante, sin necesidad de recompilar.",
+    "publish": "Publicar cambios",
+    "publishing": "Publicando…",
+    "published": "Publicado — ya está en vivo en el sitio.",
+    "item": "Elemento"
+  },
+  "media": {
+    "title": "Multimedia",
+    "subtitle": "Define una foto de fondo para cada sección. Si una sección no tiene foto, mantiene su aspecto habitual — azul marino sólido para la sección principal, fondos blancos o claros para el resto — así que ninguna necesita foto salvo que tú lo decidas.",
+    "noPhoto": "Sin foto — aspecto predeterminado",
+    "setPhoto": "Establecer foto",
+    "uploading": "Subiendo…",
+    "remove": "Eliminar"
+  },
+  "sections": {
+    "hero": "Portada",
+    "property": "Propiedad",
+    "residency": "Residencia",
+    "vehicles": "Vehículos",
+    "business": "Empresa",
+    "insurance": "Seguros",
+    "adaptation": "Adaptación",
+    "why": "Por qué elegirnos",
+    "how": "Cómo trabajamos",
+    "faq": "Preguntas frecuentes",
+    "contact": "Contacto"
+  },
+  "errors": {
+    "incorrectCredentials": "Correo electrónico o contraseña incorrectos.",
+    "passwordTooShort": "Usa al menos 8 caracteres.",
+    "passwordMismatch": "Las contraseñas no coinciden.",
+    "resetLinkInvalid": "Este enlace de restablecimiento no es válido o ha caducado — solicita uno nuevo.",
+    "unknownSection": "Sección desconocida.",
+    "noFileSelected": "Elige primero un archivo de imagen.",
+    "unsupportedFileType": "Solo se admiten imágenes JPEG, PNG o WebP.",
+    "fileTooLarge": "La imagen es demasiado grande — máximo 10 MB."
+  },
+  "language": {
+    "label": "Idioma"
+  }
+}

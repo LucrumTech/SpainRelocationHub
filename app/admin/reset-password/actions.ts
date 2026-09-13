@@ -5,6 +5,8 @@ import { consumeResetToken, markResetTokenUsed } from "@/lib/admin/reset";
 import { updateAdminPassword } from "@/lib/admin/users";
 import { hashPassword } from "@/lib/admin/password";
 
+// `error` is a key into messages/admin/*.json — see the same note on
+// LoginState in ../login/actions.ts.
 export type ResetPasswordState = { error?: string };
 
 export async function resetPasswordAction(
@@ -16,15 +18,15 @@ export async function resetPasswordAction(
   const confirm = String(formData.get("confirm") ?? "");
 
   if (password.length < 8) {
-    return { error: "Use at least 8 characters." };
+    return { error: "errors.passwordTooShort" };
   }
   if (password !== confirm) {
-    return { error: "Passwords don't match." };
+    return { error: "errors.passwordMismatch" };
   }
 
   const consumed = consumeResetToken(token);
   if (!consumed) {
-    return { error: "This reset link is invalid or has expired — request a new one." };
+    return { error: "errors.resetLinkInvalid" };
   }
 
   updateAdminPassword(consumed.adminUserId, hashPassword(password));

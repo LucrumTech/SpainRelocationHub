@@ -4,6 +4,8 @@ import { useState, useTransition } from "react";
 import type { Locale } from "@/lib/locale/config";
 import type { ContentTree } from "@/lib/content/store";
 import { saveContentAction } from "./actions";
+import { useAdminT } from "@/components/admin/AdminLocaleProvider";
+import type { AdminT } from "@/lib/admin/dict";
 
 type Json = string | number | boolean | null | Json[] | { [key: string]: Json };
 type PathSegment = string | number;
@@ -35,10 +37,12 @@ function FieldTree({
   node,
   path,
   onChange,
+  t,
 }: {
   node: Json;
   path: PathSegment[];
   onChange: (path: PathSegment[], value: string) => void;
+  t: AdminT;
 }) {
   if (typeof node === "string") {
     const label = path.slice(-2).join(" › ") || "value";
@@ -70,8 +74,10 @@ function FieldTree({
       <div className="ml-2 space-y-3 border-l border-border pl-4">
         {node.map((item, i) => (
           <div key={i} className="rounded-md bg-surface-alt p-3">
-            <div className="mb-2 text-xs font-semibold text-muted">Item {i + 1}</div>
-            <FieldTree node={item} path={[...path, i]} onChange={onChange} />
+            <div className="mb-2 text-xs font-semibold text-muted">
+              {t("content.item")} {i + 1}
+            </div>
+            <FieldTree node={item} path={[...path, i]} onChange={onChange} t={t} />
           </div>
         ))}
       </div>
@@ -90,7 +96,7 @@ function FieldTree({
                   {key}
                 </div>
               ) : null}
-              <FieldTree node={value} path={[...path, key]} onChange={onChange} />
+              <FieldTree node={value} path={[...path, key]} onChange={onChange} t={t} />
             </div>
           );
         })}
@@ -111,6 +117,7 @@ export default function ContentEditorTree({
   const [content, setContent] = useState<ContentTree>(initialContent);
   const [pending, startTransition] = useTransition();
   const [justSaved, setJustSaved] = useState(false);
+  const t = useAdminT();
 
   function handleChange(path: PathSegment[], value: string) {
     setJustSaved(false);
@@ -133,11 +140,11 @@ export default function ContentEditorTree({
           disabled={pending}
           className="rounded-md bg-gold px-4 py-2 text-sm font-medium text-navy hover:bg-gold-hover disabled:opacity-60"
         >
-          {pending ? "Publishing…" : "Publish changes"}
+          {pending ? t("content.publishing") : t("content.publish")}
         </button>
-        {justSaved && !pending ? <span className="text-sm text-muted">Published — live on the site now.</span> : null}
+        {justSaved && !pending ? <span className="text-sm text-muted">{t("content.published")}</span> : null}
       </div>
-      <FieldTree node={content as Json} path={[]} onChange={handleChange} />
+      <FieldTree node={content as Json} path={[]} onChange={handleChange} t={t} />
     </div>
   );
 }

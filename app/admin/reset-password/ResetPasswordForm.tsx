@@ -2,19 +2,21 @@
 
 import { useActionState } from "react";
 import { resetPasswordAction, type ResetPasswordState } from "./actions";
+import { useAdminT } from "@/components/admin/AdminLocaleProvider";
 
 export function ResetPasswordForm({ token }: { token: string }) {
   const [state, formAction, pending] = useActionState<ResetPasswordState | undefined, FormData>(
     resetPasswordAction,
     undefined,
   );
+  const t = useAdminT();
 
   return (
     <form action={formAction}>
       <input type="hidden" name="token" value={token} />
 
       <label htmlFor="password" className="mt-6 block text-sm font-medium text-ink">
-        New password
+        {t("resetPassword.newPassword")}
       </label>
       <input
         id="password"
@@ -28,7 +30,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
       />
 
       <label htmlFor="confirm" className="mt-4 block text-sm font-medium text-ink">
-        Confirm password
+        {t("resetPassword.confirmPassword")}
       </label>
       <input
         id="confirm"
@@ -42,7 +44,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
 
       {state?.error ? (
         <p role="alert" className="mt-3 text-sm text-error">
-          {state.error}
+          {t(state.error)}
         </p>
       ) : null}
 
@@ -51,7 +53,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
         disabled={pending}
         className="mt-6 w-full rounded-md bg-gold px-4 py-2 font-medium text-navy transition-colors hover:bg-gold-hover disabled:opacity-60"
       >
-        {pending ? "Saving…" : "Set new password"}
+        {pending ? t("resetPassword.saving") : t("resetPassword.save")}
       </button>
     </form>
   );

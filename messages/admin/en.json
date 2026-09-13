@@ -1,0 +1,93 @@
+{
+  "login": {
+    "title": "Spain Relocation Hub — Admin",
+    "subtitle": "Sign in to manage leads and site content.",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign in",
+    "signingIn": "Signing in…",
+    "forgotPassword": "Forgot password?"
+  },
+  "forgotPassword": {
+    "title": "Reset your password",
+    "subtitle": "Enter your admin email and we'll send a reset link.",
+    "email": "Email",
+    "send": "Send reset link",
+    "sending": "Sending…",
+    "submittedText": "If that email has an admin account, a reset link is on its way — it expires in 1 hour.",
+    "backToSignIn": "Back to sign in"
+  },
+  "resetPassword": {
+    "title": "Set a new password",
+    "missingLink": "Missing reset link. Request a new one from the sign-in page.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "save": "Set new password",
+    "saving": "Saving…"
+  },
+  "nav": {
+    "brand": "SRH Admin",
+    "leads": "Leads",
+    "content": "Content",
+    "media": "Media",
+    "signOut": "Sign out"
+  },
+  "leads": {
+    "title": "Leads",
+    "countLabel": "Recorded submissions: {count}",
+    "exportCsv": "Export CSV",
+    "received": "Received",
+    "name": "Name",
+    "contact": "Contact",
+    "services": "Services",
+    "locale": "Locale",
+    "qualification": "Qualification",
+    "country": "Country",
+    "timeline": "Timeline",
+    "partySize": "Party size",
+    "step1Only": "Step 1 only",
+    "noLeads": "No leads yet."
+  },
+  "content": {
+    "title": "Content",
+    "subtitle": "Edit page text per language. Section and list structure is fixed — only wording is editable. Publishing updates the live site immediately, no rebuild needed.",
+    "publish": "Publish changes",
+    "publishing": "Publishing…",
+    "published": "Published — live on the site now.",
+    "item": "Item"
+  },
+  "media": {
+    "title": "Media",
+    "subtitle": "Set a background photo per section. Any section without one falls back to its normal look — solid navy for the hero, plain white/light backgrounds for the rest — so nothing needs a photo unless you set one.",
+    "noPhoto": "No photo set — default look",
+    "setPhoto": "Set photo",
+    "uploading": "Uploading…",
+    "remove": "Remove"
+  },
+  "sections": {
+    "hero": "Hero",
+    "property": "Property",
+    "residency": "Residency",
+    "vehicles": "Vehicles",
+    "business": "Business",
+    "insurance": "Insurance",
+    "adaptation": "Adaptation",
+    "why": "Why Choose Us",
+    "how": "How We Work",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "errors": {
+    "incorrectCredentials": "Incorrect email or password.",
+    "passwordTooShort": "Use at least 8 characters.",
+    "passwordMismatch": "Passwords don't match.",
+    "resetLinkInvalid": "This reset link is invalid or has expired — request a new one.",
+    "unknownSection": "Unknown section.",
+    "noFileSelected": "Choose an image file first.",
+    "unsupportedFileType": "Only JPEG, PNG, or WebP images are supported.",
+    "fileTooLarge": "Image is too large — 10MB maximum."
+  },
+  "language": {
+    "label": "Language"
+  }
+}

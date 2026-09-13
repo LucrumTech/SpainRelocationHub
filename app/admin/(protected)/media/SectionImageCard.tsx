@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import type { SectionKey } from "@/lib/settings/keys";
 import { uploadSectionImageAction, removeSectionImageAction, type UploadSectionImageState } from "./actions";
+import { useAdminT } from "@/components/admin/AdminLocaleProvider";
 
 export function SectionImageCard({
   section,
@@ -17,6 +18,7 @@ export function SectionImageCard({
     uploadSectionImageAction,
     undefined,
   );
+  const t = useAdminT();
 
   return (
     <div className="rounded-lg border border-border bg-surface p-5">
@@ -30,7 +32,7 @@ export function SectionImageCard({
         </div>
       ) : (
         <div className="mb-4 flex h-32 items-center justify-center rounded-md border border-dashed border-border-input text-xs text-muted">
-          No photo set — default look
+          {t("media.noPhoto")}
         </div>
       )}
 
@@ -49,10 +51,10 @@ export function SectionImageCard({
             disabled={pending}
             className="rounded-md bg-gold px-3 py-1.5 text-xs font-medium text-navy hover:bg-gold-hover disabled:opacity-60"
           >
-            {pending ? "Uploading…" : "Set photo"}
+            {pending ? t("media.uploading") : t("media.setPhoto")}
           </button>
         </div>
-        {state?.error ? <p className="text-xs text-error">{state.error}</p> : null}
+        {state?.error ? <p className="text-xs text-error">{t(state.error)}</p> : null}
       </form>
 
       {imageUrl ? (
@@ -62,7 +64,7 @@ export function SectionImageCard({
             type="submit"
             className="rounded-md border border-border-input px-3 py-1.5 text-xs font-medium text-ink hover:bg-surface-alt"
           >
-            Remove
+            {t("media.remove")}
           </button>
         </form>
       ) : null}

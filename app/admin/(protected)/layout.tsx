@@ -1,33 +1,37 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { logoutAction } from "../actions";
+import { getAdminLocale, getAdminDictionary } from "@/lib/admin/i18n";
+import { createAdminT } from "@/lib/admin/dict";
+import { AdminLanguageSwitcher } from "@/components/admin/AdminLanguageSwitcher";
 
-// English-only admin UI for now — a known simplification versus the SAD's
-// "usable by a non-technical operator working in Russian or Ukrainian"
-// requirement, scoped out to ship an admin panel today at all.
-export default function AdminLayout({ children }: { children: ReactNode }) {
+export default async function AdminLayout({ children }: { children: ReactNode }) {
+  const locale = await getAdminLocale();
+  const t = createAdminT(await getAdminDictionary(locale));
+
   return (
     <div className="min-h-screen bg-surface-alt">
       <header className="border-b border-border bg-navy">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
           <Link href="/admin/leads" className="font-heading text-lg text-surface">
-            SRH Admin
+            {t("nav.brand")}
           </Link>
           <nav className="flex items-center gap-5 text-sm text-surface/90">
             <Link href="/admin/leads" className="hover:text-gold">
-              Leads
+              {t("nav.leads")}
             </Link>
             <Link href="/admin/content" className="hover:text-gold">
-              Content
+              {t("nav.content")}
             </Link>
             <Link href="/admin/media" className="hover:text-gold">
-              Media
+              {t("nav.media")}
             </Link>
             <form action={logoutAction}>
               <button type="submit" className="hover:text-gold">
-                Sign out
+                {t("nav.signOut")}
               </button>
             </form>
+            <AdminLanguageSwitcher dark />
           </nav>
         </div>
       </header>

@@ -28,6 +28,8 @@ function revalidateHomepages() {
   }
 }
 
+// `error` is a key into messages/admin/*.json — see the same note on
+// LoginState in ../../login/actions.ts.
 export type UploadSectionImageState = { error?: string };
 
 // `section` travels as a plain hidden form field, not a bound closure
@@ -45,21 +47,21 @@ export async function uploadSectionImageAction(
 ): Promise<UploadSectionImageState> {
   const section = formData.get("section");
   if (!isSectionKey(section)) {
-    return { error: "Unknown section." };
+    return { error: "errors.unknownSection" };
   }
 
   const file = formData.get("image");
   if (!(file instanceof File) || file.size === 0) {
-    return { error: "Choose an image file first." };
+    return { error: "errors.noFileSelected" };
   }
 
   const extension = ALLOWED_TYPES[file.type];
   if (!extension) {
-    return { error: "Only JPEG, PNG, or WebP images are supported." };
+    return { error: "errors.unsupportedFileType" };
   }
 
   if (file.size > MAX_BYTES) {
-    return { error: "Image is too large — 10MB maximum." };
+    return { error: "errors.fileTooLarge" };
   }
 
   await fs.mkdir(UPLOAD_DIR, { recursive: true });
