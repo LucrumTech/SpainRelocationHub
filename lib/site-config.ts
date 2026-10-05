@@ -5,7 +5,7 @@ export const siteConfig = {
   name: "Spain Relocation Hub",
   phone: "+34 611 20 90 04",
   phoneHref: "tel:+34611209004",
-  email: "madrid.relocation.expert@gmail.com",
+  email: "o.mazurchuk@spainrelocationhub.com",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34611209004",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   social: {
