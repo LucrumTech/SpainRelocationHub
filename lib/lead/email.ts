@@ -58,17 +58,31 @@ async function dispatch(subject: string, text: string): Promise<SendResult> {
     return { delivered: true };
   }
 
+  // Resend's SDK never throws on an API-level rejection (bad key,
+  // unverified domain, invalid address, etc.) — it always resolves, with
+  // the outcome in `error`/`data` instead. A bare try/catch here would
+  // silently report every send as successful regardless of what Resend
+  // actually did with it, which is worse than not checking at all.
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: FROM_ADDRESS,
       to: NOTIFY_ADDRESS,
       replyTo: FROM_ADDRESS,
       subject,
       text,
     });
+
+    if (error) {
+      console.error("[lead email] Resend rejected the send:", error);
+      return { delivered: false };
+    }
+
+    console.log(`[lead email] delivered, Resend id: ${data?.id}`);
     return { delivered: true };
   } catch (error) {
-    console.error("[lead email] delivery failed", error);
+    // A genuine network/runtime failure (no response at all) — distinct
+    // from an API-level rejection, which is handled above.
+    console.error("[lead email] delivery threw unexpectedly", error);
     return { delivered: false };
   }
 }
